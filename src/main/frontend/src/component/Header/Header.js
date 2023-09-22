@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "./Header.css";
 import Swal from "sweetalert2";
+import "./Header.css";
 
 function Header({ currentToken, tokenChanged }) {
-  // public 폴더까지의 상대 경로 계산: 빌드 환경에 따라 사용하는 것이 좋습니다.
+  // public 폴더까지의 상대 경로 계산
   const publicPath = process.env.PUBLIC_URL;
   const [keyword, setKeyword] = useState("");
   const location = useLocation();
 
-  useEffect(() => {
-    if (currentToken) {
-      console.log("토큰o: " + currentToken);
-    } else {
-      localStorage.removeItem("login-token");
-      console.log("토큰x: " + currentToken);
-    }
-  }, [currentToken]);
-
+  //로그아웃 처리 함수 
   const logout = () => {
+    //localStorage에 있는 login-token 제거 
     localStorage.removeItem('login-token');
-    tokenChanged(null);
+    tokenChanged(null); //token null값으로 변경
     Swal.fire({
       title: "로그아웃 되셨습니다🤗 <br/> 또 만나요!",
       showConfirmButton: false,
@@ -28,6 +21,7 @@ function Header({ currentToken, tokenChanged }) {
     })
   };
 
+  //로그인 상태의 헤더
   const loginLink = (
       <ul>
         <li>
@@ -41,6 +35,7 @@ function Header({ currentToken, tokenChanged }) {
       </ul>
   );
 
+  //로그아웃 상태의 헤더
   const logoutLink = (
       <ul>
         <li>
@@ -118,6 +113,7 @@ function Header({ currentToken, tokenChanged }) {
 
           <div className="header-right">
             <nav className="sub-nav">
+              {/* 로그인 여부에 따라 헤더 출력 */}
               {currentToken ? loginLink : logoutLink}
             </nav>
             <form onSubmit={searchSubmit}>

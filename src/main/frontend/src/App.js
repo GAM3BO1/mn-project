@@ -15,23 +15,23 @@ import PartyBoard from "./pages/Party/PartyBoard.jsx";
 import PartyDetail from "./pages/Party/PartyDetail.js";
 import PartyWrite from "./pages/Party/PartyWrite.jsx";
 import PartyUpdate from "./pages/Party/PartyUpdate.jsx";
+import MyRecipeBoard from "./pages/Recipe/MyRecipeBoard";
+import PetRecipeBoard from "./pages/Recipe/PetRecipeBoard";
 import Login from "./pages/Login/Login.js";
 import Signup from "./pages/Signup/Signup.js";
 import MyPage from "./pages/MyPage/MyPage.js";
 import AdminPage from "./pages/AdminPage/AdminPage.jsx"
 import ResetPwd from "./pages/ResetPwd/ResetPwd.js";
-import MyComment from "./pages/MyPage/MyComment.js";
 import MyContent from "./pages/MyPage/MyContent.js";
-import MyRecipe from "./pages/Recipe/MyRecipeBoard";
+import MyComment from "./pages/MyPage/MyComment.js";
 import WithDrawal from "./pages/WithDrawal/WithDrawal.js"
-import PetRecipeBoard from "./pages/Recipe/PetRecipeBoard";
-
 
 function App() {
-    const [token, setToken] = useState(localStorage.getItem('login-token')); // token 상태 추가
+    // token 상태
+    const [token, setToken] = useState(localStorage.getItem('login-token')); 
 
+    //login 했을 시 login-token으로 token 변경
     const handleTokenChanged = (newToken) => {
-        console.log("새 토큰: " + newToken);
         setToken(newToken);
     }
 
@@ -60,7 +60,7 @@ function App() {
                 <Route path="/resetPwd" element={<ResetPwd />} />
                 <Route path="/myContent" element={<MyContent />} />
                 <Route path="/myComment" element={<MyComment />} />
-                <Route path="/myRecipeBoard" element={<MyRecipe />} />
+                <Route path="/myRecipeBoard" element={<MyRecipeBoard />} />
                 <Route path="/petRecipeBoard" element={<PetRecipeBoard/>} />
             </Routes>
             <Footer />

@@ -10,7 +10,7 @@
 .header {
   width: 100%;
   display: flex;
-  justify-content: space-between; /* 양쪽 끝에 배치 */
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -65,8 +65,8 @@
 .navbar {
   padding: 5px 10px;
   text-decoration: none;
-  color: #282828; /* 변경된 글자색 */
-  position: relative; /* 상대적 위치 */
+  color: #282828; 
+  position: relative; 
   transition: color 0.3s; /* 글자색 변화에 트랜지션 적용 */
 }
 
@@ -85,7 +85,7 @@
 }
 
 .navbar:hover {
-  color: #ff6a10; /* 변경된 메뉴에 호버시 글자색 변경 */
+  color: #ff6a10; /* 변경된 메뉴에 호버 시 글자색 변경 */
 }
 
 .navbar:hover:before,

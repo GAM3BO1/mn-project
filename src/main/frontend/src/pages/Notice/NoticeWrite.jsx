@@ -1,25 +1,25 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
-import axios from "axios"
-import "react-quill/dist/quill.snow.css"
-import "./NoticeWrite.css"
-import Editor from '../../component/Editor/Editor'
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import Swal from "sweetalert2";
+import Editor from '../../component/Editor/Editor'
+import "./NoticeWrite.css"
+import "react-quill/dist/quill.snow.css"
 
 function NoticeWrite() {
     const navigate = useNavigate();
 
-    const [writer, setWriter] = useState("관리자")
-    const [title, setTitle] = useState("")
-    //variable: react-quill Editor content
-    const [content, setContent] = useState("")
-    //variable: attachment
-    const [files, setFiles] = useState([]);
+    const [writer, setWriter] = useState("관리자")  //작성자
+    const [title, setTitle] = useState("")  //제목
+    const [content, setContent] = useState("")  //내용
+    const [files, setFiles] = useState([]); //첨부파일
 
-    //function: input onChange for attachments
+    //첨부파일 handle 함수
     const handleFileChange = (e) => {
         setFiles([...e.target.files]);
     };
 
+    //공지사항 업로드 함수
     const handleUploadNotice = (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -35,35 +35,43 @@ function NoticeWrite() {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }})
-            .then((response) => {
-                console.log("공지사항 업로드 성공:", response.data);
-                // 성공 시 메시지 표시 및 마이페이지로 이동
-                alert("공지사항이 업로드 되었습니다");
+            .then((response) => {;
+                Swal.fire({
+                    icon: "success",
+                    title: "공지사항이 업로드 되었습니다",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                //성공 시 공지사항 목록으로 이동
                 navigate("/noticeBoard");
             })
             .catch((error) => {
-                console.error("공지사항 업로드 실패:", error);
-                // 실패 시 오류 메시지 표시
-                alert("공지사항 업로드가 실패했습니다.");
-
+                Swal.fire({
+                    icon: "error",
+                    title: "파티 게시글 업로드가 실패했습니다",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
             });
     };
 
+    //공지사항 취소 함수
     const handleCancelNotice = () => {
-        alert("공지사항 작성을 취소합니다");
+        Swal.fire({
+            icon: "error",
+            title: "공지사항 작성을 취소합니다",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        //공지사항 작성 취소 시 공지사항 목록으로 이동
         navigate("/noticeBoard");
     }
 
     return (
         <div className="container">
             <div className="editor-container">
-                {/*
-            component: react-quill Editor
-            props: content, setContent
-            => to pass data from child component(Editor) to parent component(NoticeWrite)
-          */}
                 <Editor
-                    setTitle={setTitle}
+                    setTitle={setTitle} 
                     setContent={setContent}
                 />
                 <div className="file-container">
@@ -78,7 +86,6 @@ function NoticeWrite() {
                         첨부파일
                     </label>
 
-                    {/* selected file names */}
                     <div className="selected-files">
                         {files.map((file, index) => (
                             <div className="file-name" key={index}>

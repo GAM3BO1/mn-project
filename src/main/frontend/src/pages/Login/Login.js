@@ -61,7 +61,6 @@ const Login = ({tokenChanged}) => {
       localStorage.setItem("login-token", token); // 토큰 저장
       tokenChanged(token);
       const decodedToken = jwt_decode(token);
-      console.log(decodedToken.roles);
 
       if (decodedToken.roles) {
         // 백엔드에서 받은 역할(role) 확인

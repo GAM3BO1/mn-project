@@ -97,7 +97,7 @@ const Profile = () => {
             <span>팔로잉 {profileData.following || 0}</span>
           </div>
           <hr />
-          <p className="bio">{profileData.bio || "비어있음"}</p>
+          <p className="bio">{profileData.bio ? profileData.bio : "비어있음"}</p>
         </div>
       </div>
   );

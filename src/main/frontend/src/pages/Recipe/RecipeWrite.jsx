@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import jwt_decode from "jwt-decode";
-import "react-quill/dist/quill.snow.css"
-import "./RecipeWrite.css"
-import Editor from '../../component/Editor/Editor'
 import Swal from "sweetalert2";
+import "./RecipeWrite.css"
+import "react-quill/dist/quill.snow.css"
+import Editor from '../../component/Editor/Editor'
+
 
 function RecipeWrite() {
     const [userNum, setUserNum] = useState(0);  //유저 번호
@@ -16,7 +17,7 @@ function RecipeWrite() {
     const [cookingLevel, setCookingLevel] = useState("");  //조리 난이도
     const [ingredients, setIngredients] = useState("");
     const [content, setContent] = useState(""); //내용
-    const [mainImg, setMainImg] = useState("")
+    const [mainImg, setMainImg] = useState("")  //썸네일 이미지
     const [subImgs, setSubImgs] = useState([]); //서브 이미지
     const [viewCount, setViewCount] = useState(0);  //조회수
 
@@ -224,11 +225,6 @@ function RecipeWrite() {
             </div>
 
             <div className="recipe-editor">
-                {/*
-            component: react-quill Editor
-            props: content, setContent
-            => to pass data from child component(Editor) to parent component(NoticeWrite)
-          */}
                 <Editor
                     setTitle={setTitle}
                     setContent={setContent}

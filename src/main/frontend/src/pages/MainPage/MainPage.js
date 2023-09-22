@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 import "./MainPage.css";
 import Banner from "../../component/Banner/Banner";
-import MainPartyCardList from "../../component/CardList/MainPartyCardList";
-import axios from "axios";
 import RecipeCard from "../../component/CardList/RecipeCard";
+import MainPartyCardList from "../../component/CardList/MainPartyCardList";
 
 function MainPage() {
-
     const [hotCards, setHotCards] = useState([]);
     const [cards, setCards] = useState([]);
-
-    //초기값을 빈 배열로 설정
 
     const HotRecipeUrl = 'http://localhost:9999/recipe/like/order';
     useEffect(() => {

@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import "react-quill/dist/quill.snow.css";
-import "./PartyWrite.css";
-import Editor from "../../component/Editor/Editor";
 import Swal from "sweetalert2";
+import Editor from "../../component/Editor/Editor";
+import "./PartyWrite.css";
+import "react-quill/dist/quill.snow.css";
 
 function PartyWrite() {
+    const navigate = useNavigate();
     const [userNum, setUserNum] = useState(0);  //유저 번호
     const [title, setTitle] = useState(""); //제목
     const [content, setContent] = useState(""); //내용
     const [image, setImage] = useState(""); //썸네일 사진
-    const navigate = useNavigate();
 
     useEffect(() => {
         const newToken = localStorage.getItem('login-token');
@@ -42,14 +42,6 @@ function PartyWrite() {
         formData.append("title", title); //제목
         formData.append("content", content); //글 내용
         formData.append("image", image[0]); //썸네일 사진
-
-        console.log(formData);
-        console.log(
-            userNum + "\n" +
-            title + "\n" +
-            content + "\n" +
-            image + "\n"
-        );
 
         axios
             .post("/party/insert", formData, {
@@ -119,11 +111,6 @@ function PartyWrite() {
                 </label>
             </div>
             <div className="recipe-editor">
-                {/*
-            component: react-quill Editor
-            props: content, setContent
-            => to pass data from child component(Editor) to parent component(NoticeWrite)
-          */}
                 <Editor
                     setTitle={setTitle}
                     setContent={setContent}
