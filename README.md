@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=soft&color=auto&height=200&section=header&text=멍냥 키친&fontSize=70" />
+![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=200&section=header&text=멍냥 키친&fontSize=70)
 
 # Team Project
 Acorn 아카데미 Team Project "멍냥 프로젝트"
