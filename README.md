@@ -1,7 +1,7 @@
-![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=200&section=header&text=멍냥 키친&fontSize=70)
+<img src="https://capsule-render.vercel.app/api?type=soft&color=auto&height=200&section=header&text=%EB%A9%8D%EB%83%A5%20%ED%82%A4%EC%B9%9C&fontSize=70" />
 
 # Team Project
-Acorn 아카데미 Team Project "멍냥 프로젝트"
+"멍냥 키친"
 - 프로젝트 주소 : https://github.com/titlejjk/mn-project
 - 일정 계획 : 2023/08/12~2023/09/22
 - 자원 계획 : FrontEnd 4명 BackEnd 3명
