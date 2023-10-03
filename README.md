@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=soft&color=auto&height=200&section=header&text=%EB%A9%8D%EB%83%A5%20%ED%82%A4%EC%B9%9C&fontSize=70" />
+<img src="https://capsule-render.vercel.app/api?type=soft&color=D3783A&height=200&section=header&text=%EB%A9%8D%EB%83%A5%20%ED%82%A4%EC%B9%9C&fontSize=70&fontColor=FFFFFF" />
 
 # Team Project
 "멍냥 키친"
